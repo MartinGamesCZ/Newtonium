@@ -1,4 +1,4 @@
 import { openWindow, runRenderer } from "newtonium";
 
-runRenderer();
+await runRenderer();
 openWindow("Hello", "http://localhost:3000");

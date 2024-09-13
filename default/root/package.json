@@ -3,7 +3,8 @@
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
-    "start:renderer": "cd src/view && next dev"
+    "start:renderer": "cd src/view && next dev",
+    "start": "bun --watch src/index.ts"
   },
   "dependencies": {
     "newtonium": "file:../../lib"

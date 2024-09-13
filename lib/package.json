@@ -1,7 +1,8 @@
 {
   "name": "newtonium",
-  "module": "src/lib",
   "type": "module",
+  "module": "src/lib/index.ts",
+  "main": "src/lib/index.ts",
   "version": "0.0.0",
   "scripts": {
     "newtonium": "bun src/index.ts"

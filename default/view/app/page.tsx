@@ -1,6 +1,6 @@
 "use client";
 
-import { test } from "newtonium/src/lib/client/index.ts";
+import { test } from "newtonium/client";
 
 export default function Page() {
   return (
