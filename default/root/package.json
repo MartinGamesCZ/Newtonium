@@ -1,0 +1,17 @@
+{
+  "name": "default",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start:renderer": "cd src/view && next dev"
+  },
+  "dependencies": {
+    "newtonium": "file:../../lib"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
