@@ -1,7 +1,9 @@
+import commandBuild from "./commands/build";
 import commandInit from "./commands/init";
 
 const commands = {
   init: commandInit,
+  build: commandBuild,
 };
 
 const command = process.argv[2];

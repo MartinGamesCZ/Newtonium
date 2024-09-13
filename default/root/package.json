@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "start:renderer": "cd src/view && next dev",
-    "start": "bun --watch src/index.ts"
+    "start": "NODE_ENV=development NEWTONIUM_DEV=true bun --watch src/index.ts",
+    "build:renderer": "cd src/view && next build",
+    "run": "bun run dist/index.ts"
   },
   "dependencies": {
     "newtonium": "file:../../lib"

@@ -2,7 +2,13 @@ import { $, spawnSync } from "bun";
 import { cpSync, mkdirSync } from "fs";
 import path from "path";
 
-const packages: string[] = ["next", "react", "react-dom"];
+const packages: string[] = [
+  "next",
+  "react",
+  "react-dom",
+  "elysia",
+  "@elysiajs/static",
+];
 
 const devPackages: string[] = [
   "@types/node",
