@@ -11,7 +11,7 @@
     "build:windows": "bun build --minify --compile --outfile dist/newtonium.exe src/index.ts && chmod +x dist/newtonium.exe"
   },
   "bin": {
-    "newtonium": "./dist/runner.js"
+    "newtonium": "./dist/runner.cjs"
   },
   "devDependencies": {
     "@types/bun": "latest"
