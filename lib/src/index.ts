@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import commandBuild from "./commands/build";
 import commandInit from "./commands/init";
 
