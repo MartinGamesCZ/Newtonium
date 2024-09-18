@@ -1,5 +1,5 @@
 import { $, spawnSync } from "bun";
-import { cpSync, mkdirSync } from "fs";
+import { cpSync, existsSync, mkdirSync } from "fs";
 import path from "path";
 
 const packages: string[] = [
@@ -43,7 +43,10 @@ function createProjectFolder(name: string, cwd: string) {
 }
 
 function copyDefault(cwd: string) {
-  const default_path = path.join(__dirname, "../../../..", "default/root");
+  let default_path = path.join(__dirname, "../../../../", "default/root");
+
+  if (!existsSync(default_path))
+    default_path = path.join(__dirname, "../../..", "include/default/root");
 
   cpSync(default_path, cwd, {
     recursive: true,

@@ -14,6 +14,7 @@
   },
   "scripts": {
     "newtonium": "bun src/index.ts",
+    "prepack": "cp ../default include/default -r",
     "postinstall": "node build/builder.cjs",
     "build": "node build/builder.cjs",
     "build:linux": "bun build --minify --compile --outfile dist/newtonium src/index.ts && chmod +x dist/newtonium",
