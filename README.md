@@ -8,7 +8,7 @@ This project is in early development stage, so it's not recommended to use it in
 
 ## Roadmap
 - [x] Working prototype
-- [ ] Custom webkit embedding
+- [x] Custom webkit embedding
 - [ ] Custom IPC
 - [ ] Internal client library
 - [ ] Support for building background services

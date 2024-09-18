@@ -1,15 +1,22 @@
-# newtonium
+# Newtonium
+> [!IMPORTANT]
+> This project is in a very early development stage. Everything can change and nothing is guaranteed to work.
 
-To install dependencies:
+TypeScript and Rust based framework for building desktop applications using TypeScript and React. Newtonium is built on Webkit, Rust and Bun (with React using Next.JS), so it should be faster and lighter than Electron.
 
-```bash
-bun install
-```
+This project is in early development stage, so it's not recommended to use it in production.
 
-To run:
+MORE INFO ON GITHUB: [MartinGamesCZ/Newtonium](https://github.com/MartinGamesCZ/Newtonium)
 
-```bash
-bun run src/index.ts
-```
+## Roadmap
+- [x] Working prototype
+- [x] Custom webkit embedding
+- [ ] Custom IPC
+- [ ] Internal client library
+- [ ] Support for building background services
 
-This project was created using `bun init` in bun v1.1.9. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Authors
+- [Martin Petr](https://github.com/MartinGamesCZ)
+
+## Support me
+If you want to support me, you can give this project a star on GitHub. You can also donate me (if you want to, please contact me).

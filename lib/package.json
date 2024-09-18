@@ -3,7 +3,15 @@
   "type": "module",
   "module": "src/lib/index.ts",
   "main": "src/lib/index.ts",
-  "version": "0.1.7",
+  "version": "0.1.9",
+  "author": {
+    "name": "Martin Petr",
+    "email": "martinpetrnp@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartinPetr/Newtonium.git"
+  },
   "scripts": {
     "newtonium": "bun src/index.ts",
     "postinstall": "node build/builder.cjs",
@@ -12,7 +20,7 @@
     "build:windows": "bun build --minify --compile --outfile dist/newtonium.exe --target=bun-windows-x64 src/index.ts && chmod +x dist/newtonium.exe"
   },
   "bin": {
-    "newtonium": "./dist/runner.cjs"
+    "newtonium": "dist/runner.cjs"
   },
   "devDependencies": {
     "@types/bun": "latest"
