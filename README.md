@@ -9,6 +9,9 @@ This project is in early development stage, so it's not recommended to use it in
 ## Roadmap
 - [x] Working prototype
 - [x] Custom webkit embedding
+- [ ] Windows support
+- [ ] MacOS support
+- [ ] Mobile (android) support
 - [ ] Custom IPC
 - [ ] Internal client library
 - [ ] Support for building background services
