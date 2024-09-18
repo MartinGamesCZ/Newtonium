@@ -78,7 +78,10 @@ function createSourceDirectory(root: string) {
 }
 
 function copyView(src: string) {
-  const default_path = path.join(__dirname, "../../../..", "default/view");
+  let default_path = path.join(__dirname, "../../../..", "default/view");
+
+  if (!existsSync(default_path))
+    default_path = path.join(__dirname, "../../..", "include/default/view");
 
   cpSync(default_path, path.join(src, "view"), {
     recursive: true,
@@ -86,7 +89,10 @@ function copyView(src: string) {
 }
 
 function copySource(src: string) {
-  const default_path = path.join(__dirname, "../../../..", "default/source");
+  let default_path = path.join(__dirname, "../../../..", "default/source");
+
+  if (!existsSync(default_path))
+    default_path = path.join(__dirname, "../../..", "include/default/source");
 
   cpSync(default_path, src, {
     recursive: true,
