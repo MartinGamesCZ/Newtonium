@@ -1,7 +1,6 @@
 "use client";
 
 import { Ipc } from "newtonium/client";
-import type App from "..";
 
 export default function Page() {
   return (
@@ -9,13 +8,13 @@ export default function Page() {
       <h1>Hello World!</h1>
       <button
         onClick={() =>
-          Ipc<App>()
+          Ipc<any>()
             .greet.get({
               query: {
                 name: "World",
               },
             })
-            .then((r) => alert(r.data))
+            .then((r: any) => alert(r.data))
         }
       >
         Test
