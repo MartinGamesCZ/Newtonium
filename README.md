@@ -64,7 +64,7 @@ MORE INFO ON GITHUB: [MartinGamesCZ/Newtonium](https://github.com/MartinGamesCZ/
 - [ ] Windows support
 - [ ] MacOS support
 - [ ] Mobile (android) support
-- [ ] Custom IPC
+- [x] Custom IPC
 - [ ] Internal client library
 - [ ] Support for building background services
 
