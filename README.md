@@ -20,7 +20,7 @@ To get started with Newtonium, you first need to install our main library, which
 npm install -g newtonium
 ```
 
-This will take a while, because it needs to download the binaries, but you can add --foreground-scripts flag to track the progress.
+This will take a while, because it needs to download the binaries, but you can add `--foreground-scripts` flag to track the progress.
 
 ### Creating a new project
 To create a new project, you can use the following command:
@@ -45,6 +45,8 @@ You can build the project using the following command:
 ```bash
 newtonium build
 ```
+
+This will create a file called dist.AppImage, which you can run and distribute.
 
 ## Project structure
 There are two main folders in the project:
