@@ -10,20 +10,8 @@ else {
 
   i.run();
 }
-openWindow("Hello", "http://localhost:3000");
+const window = openWindow("Hello", "http://localhost:3000");
 
-const App = Ipc().get(
-  "/greet",
-  ({ query }) => {
-    return `Hello ${query.name}!`;
-  },
-  {
-    query: t.Object({
-      name: t.String(),
-    }),
-  },
-);
-
-App.listen(9999);
-
-export type App = typeof App;
+window.ipc.onMessage((msg: string) => {
+  window.ipc.send(`Hello ${msg}!`);
+});

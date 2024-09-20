@@ -1,8 +1,12 @@
-import cors from "@elysiajs/cors";
-import Elysia from "elysia";
+import type Window from "@newtonium/core";
 
-export function Ipc() {
-  return new Elysia().use(cors()).get("/__newtonium", () => {}, {});
+export default function Ipc(window: Window) {
+  return {
+    send: (msg: string) => {
+      window.ipc.send(msg);
+    },
+    onMessage: (cb: (msg: string) => any) => {
+      window.ipc.onMessage(cb);
+    },
+  };
 }
-
-export { t } from "elysia";

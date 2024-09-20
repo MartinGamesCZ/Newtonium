@@ -1,6 +1,7 @@
 import { spawn } from "bun";
 import path from "path";
 import Window from "@newtonium/core";
+import Ipc from "../ipc";
 
 export function openWindow(title: string, url: string) {
   // TODO: Fix when app is built (binary not found)
@@ -16,4 +17,8 @@ export function openWindow(title: string, url: string) {
   window.on("exit", () => {
     process.exit();
   });
+
+  return {
+    ipc: Ipc(window),
+  };
 }

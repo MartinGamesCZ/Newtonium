@@ -1,8 +1,8 @@
-import { treaty } from "@elysiajs/eden";
-import type Elysia from "elysia";
-
-export function Ipc<TrpcType extends Elysia<any, any, any, any, any, any>>() {
-  const trpc = treaty<TrpcType>(`localhost:9999`);
-
-  return (trpc as any).__newtonium ? trpc : ({} as any);
-}
+export const Ipc = {
+  send: (msg: string) => {
+    (window as any).newtonium_ipc.send(msg);
+  },
+  onMessage: (cb: (msg: string) => any) => {
+    (window as any).newtonium_ipc.onMessage(cb);
+  },
+};

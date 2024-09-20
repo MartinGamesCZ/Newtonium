@@ -7,15 +7,13 @@ export default function Page() {
     <>
       <h1>Hello World!</h1>
       <button
-        onClick={() =>
-          Ipc<any>()
-            .greet.get({
-              query: {
-                name: "World",
-              },
-            })
-            .then((r: any) => alert(r.data))
-        }
+        onClick={() => {
+          Ipc.onMessage((msg) => {
+            alert(msg);
+          })
+
+          Ipc.send("World");
+        }}
       >
         Test
       </button>
