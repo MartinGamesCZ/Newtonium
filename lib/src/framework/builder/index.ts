@@ -5,15 +5,22 @@ import path from "path";
 export async function buildApp(root: string) {
   const src = path.join(root, "src");
 
+  console.log("Building view...");
   await buildRenderer(root);
 
+  console.log("Copying image files...");
   copyRunner(root);
 
+  console.log("Compiling source...");
   await compile(root);
 
+  console.log("Cleaning up...");
   removeJunk(root);
 
+  console.log("Packaging app...");
   await packageApp(root);
+
+  console.log("Done!");
 }
 
 async function buildRenderer(root: string) {
@@ -50,7 +57,6 @@ function removeJunk(root: string) {
   const dist = path.join(root, "dist");
 
   rmSync(path.join(dist, "index.ts"));
-  rmSync(path.join(dist, "runner.ts"));
 }
 
 async function packageApp(root: string) {

@@ -1,5 +1,3 @@
-#!/usr/bin/env bun
-
 import commandBuild from "./commands/build";
 import commandInit from "./commands/init";
 
