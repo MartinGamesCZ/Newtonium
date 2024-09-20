@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MartinPetr/Newtonium.git"
+    "url": "git+https://github.com/MartinGamesCZ/Newtonium.git"
   },
   "scripts": {
     "newtonium": "bun src/index.ts",
