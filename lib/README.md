@@ -12,6 +12,7 @@ You will also need to get the following dependencies:
 - bun
 - npm
 - libwebkit2gtk-4.1-dev (`apt install libwebkit2gtk-4.1-dev`)
+- libgtk-3-dev (`apt install libgtk-3-dev`)
 
 ## Getting started
 To get started with Newtonium, you first need to install our main library, which includes the CLI.
@@ -64,6 +65,14 @@ MORE INFO ON GITHUB: [MartinGamesCZ/Newtonium](https://github.com/MartinGamesCZ/
 - [ ] Custom IPC
 - [ ] Internal client library
 - [ ] Support for building background services
+
+## Let me know
+If you featured Newtonium in your project, please let me know, I would love to see it.
+
+If you have featured Newtonium in some article, or video, please let me know, I would love to see it.
+
+## Contact me
+You can find my contact information on my [GitHub profile](https://github.com/MartinGamesCZ).
 
 ## Authors
 - [Martin Petr](https://github.com/MartinGamesCZ)
