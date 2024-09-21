@@ -8,9 +8,7 @@
     "build:renderer": "cd src/view && next build",
     "run": "bun run dist/index.ts"
   },
-  "dependencies": {
-    "newtonium": "file:../../lib"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/bun": "latest"
   },

@@ -3,7 +3,7 @@
   "type": "module",
   "module": "src/lib/index.ts",
   "main": "src/lib/index.ts",
-  "version": "0.3.0",
+  "version": "0.3.3",
   "author": {
     "name": "Martin Petr",
     "email": "martinpetrnp@gmail.com"
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "newtonium": "bun src/index.ts",
-    "prepack": "cp ../default include -r",
+    "prepack": "rm -rf include && mkdir include && cp ../default include/default -r",
     "postinstall": "node build/builder.cjs",
     "build": "node build/builder.cjs",
     "build:linux": "bun build --minify --compile --outfile dist/newtonium src/index.ts && chmod +x dist/newtonium",

@@ -2,13 +2,7 @@ import { $, spawnSync } from "bun";
 import { cpSync, existsSync, mkdirSync } from "fs";
 import path from "path";
 
-const packages: string[] = [
-  "next",
-  "react",
-  "react-dom",
-  "elysia",
-  "@elysiajs/static",
-];
+const packages: string[] = ["next", "react", "react-dom"];
 
 const devPackages: string[] = [
   "@types/node",
@@ -19,15 +13,25 @@ const devPackages: string[] = [
 
 export default async function createApp(name: string, cwd: string) {
   // Create project folder
+  console.log("Creating project folder");
   const root = createProjectFolder(name, cwd);
 
+  console.log("Copying default files...");
   copyDefault(root);
+
+  console.log("Installing packages...");
   installPackages(root);
 
+  console.log("Creating source directory...");
   const src = createSourceDirectory(root);
 
+  console.log("Copying view directory...");
   copyView(src);
+
+  console.log("Copying source files...");
   copySource(src);
+
+  console.log("Done!");
 }
 
 function createProjectFolder(name: string, cwd: string) {
@@ -44,15 +48,15 @@ function createProjectFolder(name: string, cwd: string) {
 
 function copyDefault(cwd: string) {
   let default_path = path.join(
-    import.meta.dirname,
-    "../../../../",
+    process.env.NEWTONIUM_CLI_DIR ?? path.join(import.meta.dirname, "../"),
+    "../",
     "default/root",
   );
 
   if (!existsSync(default_path))
     default_path = path.join(
-      import.meta.dirname,
-      "../../..",
+      process.env.NEWTONIUM_CLI_DIR ?? path.join(import.meta.dirname, "../../"),
+      "../",
       "include/default/root",
     );
 
@@ -87,15 +91,15 @@ function createSourceDirectory(root: string) {
 
 function copyView(src: string) {
   let default_path = path.join(
-    import.meta.dirname,
-    "../../../..",
+    process.env.NEWTONIUM_CLI_DIR ?? path.join(import.meta.dirname, "../"),
+    "../",
     "default/view",
   );
 
   if (!existsSync(default_path))
     default_path = path.join(
-      import.meta.dirname,
-      "../../..",
+      process.env.NEWTONIUM_CLI_DIR ?? path.join(import.meta.dirname, "../../"),
+      "../",
       "include/default/view",
     );
 
@@ -106,15 +110,15 @@ function copyView(src: string) {
 
 function copySource(src: string) {
   let default_path = path.join(
-    import.meta.dirname,
-    "../../../..",
+    process.env.NEWTONIUM_CLI_DIR ?? path.join(import.meta.dirname, "../"),
+    "../",
     "default/source",
   );
 
   if (!existsSync(default_path))
     default_path = path.join(
-      import.meta.dirname,
-      "../../..",
+      process.env.NEWTONIUM_CLI_DIR ?? path.join(import.meta.dirname, "../../"),
+      "../",
       "include/default/source",
     );
 
