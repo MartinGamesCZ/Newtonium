@@ -43,10 +43,18 @@ function createProjectFolder(name: string, cwd: string) {
 }
 
 function copyDefault(cwd: string) {
-  let default_path = path.join(__dirname, "../../../../", "default/root");
+  let default_path = path.join(
+    import.meta.dirname,
+    "../../../../",
+    "default/root",
+  );
 
   if (!existsSync(default_path))
-    default_path = path.join(__dirname, "../../..", "include/default/root");
+    default_path = path.join(
+      import.meta.dirname,
+      "../../..",
+      "include/default/root",
+    );
 
   cpSync(default_path, cwd, {
     recursive: true,
@@ -78,10 +86,18 @@ function createSourceDirectory(root: string) {
 }
 
 function copyView(src: string) {
-  let default_path = path.join(__dirname, "../../../..", "default/view");
+  let default_path = path.join(
+    import.meta.dirname,
+    "../../../..",
+    "default/view",
+  );
 
   if (!existsSync(default_path))
-    default_path = path.join(__dirname, "../../..", "include/default/view");
+    default_path = path.join(
+      import.meta.dirname,
+      "../../..",
+      "include/default/view",
+    );
 
   cpSync(default_path, path.join(src, "view"), {
     recursive: true,
@@ -89,10 +105,18 @@ function copyView(src: string) {
 }
 
 function copySource(src: string) {
-  let default_path = path.join(__dirname, "../../../..", "default/source");
+  let default_path = path.join(
+    import.meta.dirname,
+    "../../../..",
+    "default/source",
+  );
 
   if (!existsSync(default_path))
-    default_path = path.join(__dirname, "../../..", "include/default/source");
+    default_path = path.join(
+      import.meta.dirname,
+      "../../..",
+      "include/default/source",
+    );
 
   cpSync(default_path, src, {
     recursive: true,
