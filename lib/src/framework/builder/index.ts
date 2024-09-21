@@ -63,18 +63,5 @@ function removeJunk(root: string) {
 async function packageApp(root: string) {
   const dist = path.join(root, "dist");
 
-  /*spawnSync({
-    cmd: [
-      path.join(
-        __dirname,
-        "../../../include/packager_linux/appimage_tool.AppImage",
-      ),
-      ".",
-      "../dist.AppImage",
-    ],
-    cwd: dist,
-    stdio: ["inherit", "inherit", "inherit"],
-  });*/
-
   await bundle(dist);
 }
