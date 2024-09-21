@@ -59,7 +59,8 @@ MORE INFO ON GITHUB: [MartinGamesCZ/Newtonium](https://github.com/MartinGamesCZ/
 ## Roadmap
 - [x] Working prototype
 - [x] Custom webkit embedding
-- [ ] Windows support
+- [x] Windows support (building)
+- [ ] Windows support (development)
 - [ ] MacOS support
 - [ ] Mobile (android) support
 - [ ] Custom IPC
