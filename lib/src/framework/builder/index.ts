@@ -1,6 +1,7 @@
 import { $, spawnSync } from "bun";
 import { cpSync, rmSync } from "fs";
 import path from "path";
+import bundle from "@newtonium/bundler";
 
 export async function buildApp(root: string) {
   const src = path.join(root, "src");
@@ -62,7 +63,7 @@ function removeJunk(root: string) {
 async function packageApp(root: string) {
   const dist = path.join(root, "dist");
 
-  spawnSync({
+  /*spawnSync({
     cmd: [
       path.join(
         __dirname,
@@ -73,5 +74,7 @@ async function packageApp(root: string) {
     ],
     cwd: dist,
     stdio: ["inherit", "inherit", "inherit"],
-  });
+  });*/
+
+  await bundle(dist);
 }

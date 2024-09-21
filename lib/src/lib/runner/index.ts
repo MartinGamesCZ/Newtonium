@@ -1,7 +1,7 @@
 import { spawn } from "bun";
 import path from "path";
-import { getPort } from "../helpers/port"
-import { checkIsDev } from "../helpers/env"
+import { getPort } from "../helpers/port";
+import { checkIsDev } from "../helpers/env";
 import { Elysia } from "elysia";
 import { staticPlugin } from "@elysiajs/static";
 
@@ -14,15 +14,15 @@ export async function runRenderer() {
     new Elysia()
       .use(
         staticPlugin({
-          assets: import.meta.env.APPDIR + "/view",
+          assets: process.cwd() + "/view",
           prefix: "/",
         }),
       )
       .listen(port);
 
     return {
-      url: `http://localhost:${port}`
-    }
+      url: `http://localhost:${port}`,
+    };
   }
 
   spawn({
@@ -34,8 +34,8 @@ export async function runRenderer() {
   await awaitConnection(port);
 
   return {
-    url: `http://localhost:${port}`
-  }
+    url: `http://localhost:${port}`,
+  };
 }
 
 async function awaitConnection(port: number) {
