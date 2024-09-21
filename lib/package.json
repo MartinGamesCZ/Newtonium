@@ -3,7 +3,7 @@
   "type": "module",
   "module": "src/lib/index.ts",
   "main": "src/lib/index.ts",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Martin Petr",
     "email": "martinpetrnp@gmail.com"
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "newtonium": "bun src/index.ts",
-    "prepack": "cp ../default include/default -r",
+    "prepack": "cp ../default include -r",
     "postinstall": "node build/builder.cjs",
     "build": "node build/builder.cjs",
     "build:linux": "bun build --minify --compile --outfile dist/newtonium src/index.ts && chmod +x dist/newtonium",
@@ -35,12 +35,13 @@
     "@elysiajs/static": "^1.1.1",
     "@elysiajs/trpc": "^1.1.0",
     "@newtonium/bundler": "^0.2.0",
-    "@newtonium/core": "0.1.6",
+    "@newtonium/core": "^0.2.1",
     "@types/node": "^22.5.4",
     "ansi-colors": "^4.1.3",
     "axios": "^1.7.7",
     "bun": "^1.1.27",
     "cli-progress": "^3.12.0",
-    "elysia": "^1.1.12"
+    "elysia": "^1.1.12",
+    "original-fs": "^1.2.0"
   }
 }

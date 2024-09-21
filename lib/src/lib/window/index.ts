@@ -8,7 +8,12 @@ export function openWindow(title: string, url: string) {
   const window = new Window(title, url);
 
   if (process.env.NEWTONIUM_DEV != "true")
-    window.setCustomBinaryPath(path.join(process.cwd() ?? "", "include/core"));
+    window.setCustomBinaryPath(
+      path.join(
+        process.cwd() ?? "",
+        "include/core" + (process.platform == "win32" ? ".exe" : ""),
+      ),
+    );
 
   window.open();
 
