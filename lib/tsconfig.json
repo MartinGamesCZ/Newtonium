@@ -8,12 +8,6 @@
     "jsx": "react-jsx",
     "allowJs": true,
 
-    // Bundler mode
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "noEmit": true,
-
     // Best practices
     "strict": true,
     "skipLibCheck": true,
@@ -22,6 +16,22 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false
-  }
+    "noPropertyAccessFromIndexSignature": false,
+
+    "noEmit": false,
+    "noEmitOnError": false,
+
+    "incremental": true,
+    "skipDefaultLibCheck": true,
+
+    "declaration": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "newtonium/client": ["src/lib/client/index"]
+    },
+
+    "outDir": "./dist_lib"
+  },
+  "include": ["./src/lib/**/*"]
 }
