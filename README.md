@@ -81,3 +81,11 @@ You can find my contact information on my [GitHub profile](https://github.com/Ma
 
 ## Support me
 If you want to support me, you can give this project a star on GitHub. You can also donate me (if you want to, please contact me).
+
+## License
+
+This project is licensed under the LGPL-2.1 License. See the [LICENSE](LICENSE) file for details.
+
+I want this to be a free and open-source project, so everyone can use it. If you want to use it in a commercial project, you can (It would be kind to at least donate).
+
+TL;DR - Use it as you want, but don't sell and/or distribute it as your own and don't blame me for anything.

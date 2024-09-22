@@ -8,6 +8,7 @@
     "name": "Martin Petr",
     "email": "martinpetrnp@gmail.com"
   },
+  "license": "LGPL-2.1-or-later",
   "types": "dist_lib/index.d.ts",
   "exports": {
     ".": {
