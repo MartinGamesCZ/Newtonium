@@ -1,10 +1,12 @@
-import { $, spawn, spawnSync } from "bun";
+import { $, readableStreamToText, spawn, spawnSync } from "bun";
 import chalk from "chalk";
 import { cpSync, existsSync, mkdirSync } from "fs";
 import ora from "ora";
 import path from "path";
 import yoctoSpinner from "yocto-spinner";
 import createSpinner from "../../utils/spinner";
+import shortenLog from "../../utils/log_shortener";
+import log, { color } from "../../utils/logger";
 
 const packages: string[] = [
   "next",
@@ -24,6 +26,10 @@ const devPackages: string[] = [
 ];
 
 export default async function createApp(name: string, cwd: string) {
+  log("");
+  log(color(["white", "green", "white"])`Creating project ${name}...`);
+  log("");
+
   // Create project folder
   const root = createProjectFolder(name, cwd);
 
@@ -37,7 +43,16 @@ export default async function createApp(name: string, cwd: string) {
 
   copySource(src);
 
-  console.log("Done!");
+  log("\nProject created successfully!");
+  log(
+    color([
+      "white",
+      "green",
+      "white",
+      "green",
+      "white",
+    ])`You can now run project using ${`cd ${name}`} and ${`bun run start`}`,
+  );
 
   setTimeout(() => process.exit(), 1000);
 }
@@ -100,13 +115,23 @@ async function installPackages(root: string) {
     spawn({
       cmd: ["bun", "add", ...packages],
       cwd: root,
-      stdio: ["inherit", "inherit", "inherit"],
-      onExit: (_: any, code: number) => {
+      stdio: ["pipe", "pipe", "pipe"],
+      onExit: async (proc, code: number) => {
         if (code !== 0) {
           spinner.fail("Failed to install packages");
 
-          throw new Error("Failed to install packages");
+          const err = await readableStreamToText(
+            proc.stderr as ReadableStream<any>,
+          );
+          const stdout = await readableStreamToText(
+            proc.stdout as ReadableStream<any>,
+          );
 
+          const out = "\n" + err + "\n" + stdout;
+
+          console.log(shortenLog(code, out));
+
+          throw new Error("Failed to install packages");
           process.exit(0);
         } else {
           r("");
@@ -119,13 +144,23 @@ async function installPackages(root: string) {
     spawn({
       cmd: ["bun", "add", "-D", ...devPackages],
       cwd: root,
-      stdio: ["inherit", "inherit", "inherit"],
-      onExit: (_: any, code: number) => {
+      stdio: ["pipe", "pipe", "pipe"],
+      onExit: async (proc, code: number) => {
         if (code !== 0) {
           spinner.fail("Failed to install packages");
 
-          throw new Error("Failed to install packages");
+          const err = await readableStreamToText(
+            proc.stderr as ReadableStream<any>,
+          );
+          const stdout = await readableStreamToText(
+            proc.stdout as ReadableStream<any>,
+          );
 
+          const out = "\n" + err + "\n" + stdout;
+
+          console.log(shortenLog(code, out));
+
+          throw new Error("Failed to install packages");
           process.exit(0);
         } else {
           r("");
