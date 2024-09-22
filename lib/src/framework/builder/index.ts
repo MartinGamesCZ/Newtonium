@@ -52,6 +52,7 @@ function copyRunner(root: string) {
   const dist = path.join(root, "dist");
   const default_path = path.join(
     process.env.NEWTONIUM_CLI_DIR ?? path.join(import.meta.dirname, "../"),
+    "../",
     "default/runner",
   );
 

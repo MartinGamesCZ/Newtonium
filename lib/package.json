@@ -3,7 +3,7 @@
   "type": "module",
   "module": "src/lib/index.ts",
   "main": "src/lib/index.ts",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "author": {
     "name": "Martin Petr",
     "email": "martinpetrnp@gmail.com"
