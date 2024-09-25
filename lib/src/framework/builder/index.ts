@@ -95,7 +95,7 @@ function copyRunner(root: string) {
   const dist = path.join(root, "dist");
   const default_path = path.join(
     process.env.NEWTONIUM_CLI_DIR ?? path.join(import.meta.dirname, "../"),
-    "../",
+    "../../",
     "include/default/runner",
   );
 
@@ -113,7 +113,7 @@ function copyRunner(root: string) {
 }
 
 async function compile(root: string, platform_id: Platform) {
-  const spinner = createSpinner("Compiling binary...");
+  const spinner = createSpinner("Building code...");
 
   const dist = path.join(root, "dist");
   const src = path.join(root, "src");
@@ -133,18 +133,18 @@ async function compile(root: string, platform_id: Platform) {
       cmd: [
         "bun",
         "build",
-        "--compile",
-        "--outfile",
-        platform.output,
+        "--minify",
         "--target",
-        platform.bun_target,
-        "index.ts",
+        "bun",
+        "--outdir",
+        ".",
+        "../src/index.ts",
       ],
       cwd: dist,
       stdio: ["pipe", "pipe", "pipe"],
       onExit: async (proc, code) => {
         if (code !== 0) {
-          spinner.fail("Failed to compile binary");
+          spinner.fail("Failed to build code");
 
           const err = await readableStreamToText(
             proc.stderr as ReadableStream<any>,
@@ -158,14 +158,14 @@ async function compile(root: string, platform_id: Platform) {
 
           console.log(shortenLog(code ?? -1, out));
 
-          throw new Error("Failed to compile binary");
+          throw new Error("Failed to build code");
           process.exit(0);
         } else r("");
       },
     }),
   );
 
-  spinner.success("Binary compiled");
+  spinner.success("Code built");
 }
 
 function removeJunk(root: string) {
@@ -190,7 +190,7 @@ async function packageApp(root: string, platform: Platform) {
   const dist = path.join(root, "dist");
 
   try {
-    await bundle(dist, platform, true);
+    await bundle(dist, "index.js", platform, true);
   } catch (e) {
     spinner.fail("Failed to package app");
 
