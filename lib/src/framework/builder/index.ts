@@ -190,7 +190,7 @@ async function packageApp(root: string, platform: Platform) {
   const dist = path.join(root, "dist");
 
   try {
-    await bundle(dist, "index.js", platform, true);
+    await bundle(dist, "index.js", true, platform, true);
   } catch (e) {
     spinner.fail("Failed to package app");
 

@@ -1,0 +1,10 @@
+{
+  "app": {
+    "name": "Newtonium App",
+    "icon": "ico.png",
+    "package_name": "com.example.newtonium"
+  },
+  "installer": {
+    "title": "Newtonium App Installer"
+  }
+}
