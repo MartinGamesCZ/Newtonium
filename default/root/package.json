@@ -1,12 +1,10 @@
 {
   "name": "default",
-  "module": "src/index.ts",
+  "module": "src/index.tsx",
   "type": "module",
   "scripts": {
-    "start:renderer": "cd src/view && next dev",
-    "start": "NODE_ENV=development NEWTONIUM_DEV=true bun --watch src/index.ts",
-    "build:renderer": "cd src/view && next build",
-    "run": "bun run dist/index.ts"
+    "start": "NODE_ENV=development NEWTONIUM_DEV=true bun --watch src/index.tsx",
+    "run": "bun run dist/index.tsx"
   },
   "dependencies": {},
   "devDependencies": {

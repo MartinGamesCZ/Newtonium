@@ -1,2 +1,3 @@
-export { openWindow } from "./window";
+export { AppWindow } from "./window";
 export { runRenderer } from "./runner";
+export * from "./app";
