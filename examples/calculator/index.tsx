@@ -1,12 +1,4 @@
-import {
-  Button,
-  GravityRenderer,
-  Layout,
-  startIpcServer,
-  Text,
-  Window,
-} from "@newtonium/gravity";
-import { writeFileSync } from "fs";
+import { Button, Layout, Text } from "@newtonium/gravity";
 import path from "path";
 import { useEffect, useState } from "react";
 import { AppWindow, App } from "newtonium";

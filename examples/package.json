@@ -1,0 +1,15 @@
+{
+  "name": "default",
+  "module": "src/index.tsx",
+  "type": "module",
+  "scripts": {
+    "start:calculator": "NODE_ENV=development NEWTONIUM_DEV=true bun --watch calculator/index.tsx"
+  },
+  "dependencies": { "@newtonium/gravity": "^0.0.0" },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
