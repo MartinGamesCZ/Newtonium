@@ -5,6 +5,9 @@
 > [!IMPORTANT]
 > This project is in a very early development stage. Everything can change and nothing is guaranteed to work.
 
+> [!NOTE]
+> We are currently switching to native rendering using our own React renderer and GTK, more info available [here](https://github.com/MartinGamesCZ/Newtonium_gravity) and [here](https://github.com/MartinGamesCZ/Newtonium_core/tree/gravity)
+
 TypeScript and Rust based framework for building desktop applications using TypeScript and React. Newtonium is built on Webkit, Rust and Bun (with React using Next.JS), so it should be faster and lighter than Electron.
 
 ## Before you start
