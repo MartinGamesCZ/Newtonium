@@ -1,1 +1,0 @@
-export { Ipc } from "./ipc";

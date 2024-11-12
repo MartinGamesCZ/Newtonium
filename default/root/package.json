@@ -3,8 +3,7 @@
   "module": "src/index.tsx",
   "type": "module",
   "scripts": {
-    "start": "NODE_ENV=development NEWTONIUM_DEV=true bun --watch src/index.tsx",
-    "run": "bun run dist/index.tsx"
+    "start": "NODE_ENV=development NEWTONIUM_DEV=true bun src/index.tsx"
   },
   "dependencies": {},
   "devDependencies": {

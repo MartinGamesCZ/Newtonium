@@ -2,10 +2,13 @@
 
 # Newtonium
 
+> [!NOTE]
+> **NOW WITH GRAVITY RENDERER** (allows you to use React components and replaces web wrapper for native components)
+
 > [!IMPORTANT]
 > This project is in a very early development stage. Everything can change and nothing is guaranteed to work.
 
-TypeScript and Rust based framework for building desktop applications using TypeScript and React. Newtonium is built on Webkit, Rust and Bun (with React using Next.JS), so it should be faster and lighter than Electron.
+TypeScript and Rust based framework for building desktop applications using TypeScript and React. Newtonium is built on Qt, Rust and Bun (with React using our own renderer - Gravity), so it should be faster and lighter than Electron.
 
 ## Before you start
 Note, that newtonium currently only supports development and building for Linux. Windows and MacOS support is planned.
@@ -13,8 +16,7 @@ Note, that newtonium currently only supports development and building for Linux.
 You will also need to get the following dependencies:
 - bun
 - npm
-- libwebkit2gtk-4.1-dev (`apt install libwebkit2gtk-4.1-dev`)
-- libgtk-3-dev (`apt install libgtk-3-dev`)
+- Qt development libraries
 
 ## Getting started
 To get started with Newtonium, you first need to install our main library, which includes the CLI.
@@ -49,12 +51,11 @@ You can build the project using the following command:
 newtonium build
 ```
 
-This will create a file called dist.AppImage, which you can run and distribute.
+This will create a binary, which you can run and distribute.
 
 ## Project structure
 There are two main folders in the project:
-- `src` - Contains the source code of the project - your functions for interactions with hardware, window management and so on.
-- `src/view` - Contains the source code of the UI - Next.JS project (only static exports are supported, you can use IPC for interacting with hardware)
+- `src` - Contains the source code of the project 
 
 MORE INFO ON GITHUB: [MartinGamesCZ/Newtonium](https://github.com/MartinGamesCZ/Newtonium)
 
@@ -64,8 +65,8 @@ MORE INFO ON GITHUB: [MartinGamesCZ/Newtonium](https://github.com/MartinGamesCZ/
 - [ ] Windows support
 - [ ] MacOS support
 - [ ] Mobile (android) support
-- [x] Custom IPC
-- [ ] Internal client library
+- <s>[x] Custom IPC</s> *Removed due to implementation of Gravity renderer*
+- [x] Gravity renderer implementation
 - [ ] Support for building background services
 
 ## Let me know

@@ -1,25 +1,23 @@
-import {
-  Button,
-  GravityRenderer,
-  Layout,
-  startIpcServer,
-  Text,
-  Window,
-} from "@newtonium/gravity";
-import { writeFileSync } from "fs";
+import { Button, View, Text, createStyleSheet } from "@newtonium/gravity";
 import path from "path";
 import { useState } from "react";
 import { AppWindow, App } from "newtonium";
 import React from "react";
 
+const styles = createStyleSheet({
+  root_view: {
+    flexDirection: "column",
+  },
+});
+
 function MyApp() {
   const [count, setCount] = useState(0);
 
   return (
-    <Layout type="column">
-      <Text style={{}}>{count.toString()}</Text>
+    <View style={styles.root_view}>
+      <Text>Count: {count}</Text>
       <Button onClick={() => setCount((c) => c + 1)}>Increment</Button>
-    </Layout>
+    </View>
   );
 }
 
@@ -32,8 +30,7 @@ const window = new AppWindow({
 
 const app = new App({
   window,
-  icon: path.join(import.meta.dirname, "../assets/icon.png"),
-  appName: "my-app",
+  icon: path.join(import.meta.dirname, "../assets/icon_128.png"),
 });
 
 app.start();

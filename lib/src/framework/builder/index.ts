@@ -34,8 +34,6 @@ export async function buildApp(root: string, platform: Platform) {
   log(color(["white", "green", "white"])`Building ${dirname}...`);
   log("");
 
-  await buildRenderer(root);
-
   copyRunner(root);
 
   await compile(root, platform);
@@ -47,46 +45,10 @@ export async function buildApp(root: string, platform: Platform) {
   log("");
   log("Project was built successfully!");
   log(
-    color([
-      "white",
-      "green",
-      "white",
-    ])`You can now run and/or distribute ${"dist/bundle/" + platforms[platform].bundle}`,
+    color(["white", "green", "white"])`You can now run and/or distribute ${
+      "dist/bundle/" + platforms[platform].bundle
+    }`
   );
-}
-
-async function buildRenderer(root: string) {
-  const spinner = createSpinner("Building view...");
-
-  await new Promise((r) =>
-    spawn({
-      cmd: ["bun", "build:renderer"],
-      cwd: root,
-      stdio: ["pipe", "pipe", "pipe"],
-      onExit: async (proc, code) => {
-        if (code !== 0) {
-          spinner.fail("Failed to build view");
-
-          const err = await readableStreamToText(
-            proc.stderr as ReadableStream<any>,
-          );
-
-          const stdout = await readableStreamToText(
-            proc.stdout as ReadableStream<any>,
-          );
-
-          const out = "\n" + err + "\n" + stdout;
-
-          console.log(shortenLog(code ?? -1, out));
-
-          throw new Error("Failed to build view");
-          process.exit(0);
-        } else r("");
-      },
-    }),
-  );
-
-  spinner.success("View built");
 }
 
 function copyRunner(root: string) {
@@ -96,7 +58,7 @@ function copyRunner(root: string) {
   const default_path = path.join(
     process.env.NEWTONIUM_CLI_DIR ?? path.join(import.meta.dirname, "../"),
     "../../",
-    "include/default/runner",
+    "include/default/runner"
   );
 
   try {
@@ -119,7 +81,7 @@ async function compile(root: string, platform_id: Platform) {
   const src = path.join(root, "src");
 
   try {
-    cpSync(path.join(src, "index.ts"), path.join(dist, "index.ts"));
+    //cpSync(path.join(src, "index.ts"), path.join(dist, "index.ts"));
   } catch (e) {
     spinner.fail("Failed to copy entrypoint");
 
@@ -136,9 +98,11 @@ async function compile(root: string, platform_id: Platform) {
         "--minify",
         "--target",
         "bun",
+        "--external",
+        "@newtonium/core",
         "--outdir",
         ".",
-        "../src/index.ts",
+        "../src/index.tsx",
       ],
       cwd: dist,
       stdio: ["pipe", "pipe", "pipe"],
@@ -147,11 +111,11 @@ async function compile(root: string, platform_id: Platform) {
           spinner.fail("Failed to build code");
 
           const err = await readableStreamToText(
-            proc.stderr as ReadableStream<any>,
+            proc.stderr as ReadableStream<any>
           );
 
           const stdout = await readableStreamToText(
-            proc.stdout as ReadableStream<any>,
+            proc.stdout as ReadableStream<any>
           );
 
           const out = "\n" + err + "\n" + stdout;
@@ -162,7 +126,7 @@ async function compile(root: string, platform_id: Platform) {
           process.exit(0);
         } else r("");
       },
-    }),
+    })
   );
 
   spinner.success("Code built");
@@ -174,7 +138,7 @@ function removeJunk(root: string) {
   const dist = path.join(root, "dist");
 
   try {
-    rmSync(path.join(dist, "index.ts"));
+    //rmSync(path.join(dist, "index.ts"));
   } catch (e) {
     spinner.fail("Failed to remove junk files");
 
@@ -190,7 +154,7 @@ async function packageApp(root: string, platform: Platform) {
   const dist = path.join(root, "dist");
 
   try {
-    await bundle(dist, "index.js", true, platform, true);
+    await bundle(dist, "__entrypoint.js", false, platform, true);
   } catch (e) {
     spinner.fail("Failed to package app");
 

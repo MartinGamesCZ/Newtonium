@@ -1,10 +1,11 @@
-import { Window } from "@newtonium/gravity";
+import { Window } from "@newtonium/core";
 
 export class AppWindow {
   title: string;
   width: number;
   height: number;
   content: any;
+  __proto: Window | null = null;
 
   constructor({
     title,
@@ -23,13 +24,7 @@ export class AppWindow {
     this.content = content;
   }
 
-  __proto = {
-    transform: () => {
-      return (
-        <Window title={this.title} width={this.width} height={this.height}>
-          {this.content}
-        </Window>
-      );
-    },
-  };
+  __createProto(icon: string) {
+    this.__proto = new Window(this.title, icon);
+  }
 }

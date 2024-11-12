@@ -3,14 +3,13 @@ import chalk from "chalk";
 import { cpSync, existsSync, mkdirSync, rm, rmSync } from "fs";
 import ora from "ora";
 import path from "path";
-import yoctoSpinner from "yocto-spinner";
 import createSpinner from "../../utils/spinner";
 import shortenLog from "../../utils/log_shortener";
 import log, { color } from "../../utils/logger";
 
 const packages: string[] = [
-  "https://gitpkg.vercel.app/MartinGamesCZ/Newtonium_core/lib?gravity",
-  "@newtonium/gravity@latest",
+  "@newtonium/core@0.3.10",
+  "@newtonium/gravity@0.1.0",
   "react",
   process.env._NEWTONIUM_FAKED_INSTALL ? null : "newtonium",
 ].filter((a) => a != null);
