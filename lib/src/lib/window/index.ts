@@ -1,27 +1,30 @@
-import { spawn } from "bun";
-import path from "path";
-import Window from "@newtonium/core";
-import Ipc from "../ipc";
+import { Window } from "@newtonium/core";
 
-export function openWindow(title: string, url: string) {
-  // TODO: Fix when app is built (binary not found)
-  const window = new Window(title, url);
+export class AppWindow {
+  title: string;
+  width: number;
+  height: number;
+  content: any;
+  __proto: Window | null = null;
 
-  if (process.env.NEWTONIUM_DEV != "true")
-    window.setCustomBinaryPath(
-      path.join(
-        process.cwd() ?? "",
-        "include/core" + (process.platform == "win32" ? ".exe" : ""),
-      ),
-    );
+  constructor({
+    title,
+    width,
+    height,
+    content,
+  }: {
+    title?: string;
+    width?: number;
+    height?: number;
+    content: any;
+  }) {
+    this.title = title ?? "Newtonium App";
+    this.width = width ?? 800;
+    this.height = height ?? 600;
+    this.content = content;
+  }
 
-  window.open();
-
-  window.on("exit", () => {
-    process.exit();
-  });
-
-  return {
-    ipc: Ipc(window),
-  };
+  __createProto(icon: string) {
+    this.__proto = new Window(this.title, icon);
+  }
 }
