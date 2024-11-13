@@ -30,7 +30,10 @@ const window = new AppWindow({
 
 const app = new App({
   window,
-  icon: path.join(import.meta.dirname, "../assets/icon_128.png"),
+  icon: path.join(
+    process.env.NEWTONIUM_ROOT ?? process.cwd(),
+    "./assets/icon_128.png"
+  ),
 });
 
-app.start();
+await app.start();

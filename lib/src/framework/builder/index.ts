@@ -1,5 +1,5 @@
 import { $, spawn, spawnSync } from "bun";
-import { cpSync, rmSync } from "fs";
+import { cpSync, existsSync, rmSync } from "fs";
 import path from "path";
 import bundle from "@newtonium/bundler";
 import log, { color } from "../../utils/logger";
@@ -27,6 +27,11 @@ const platforms = {
 
 export async function buildApp(root: string, platform: Platform) {
   const src = path.join(root, "src");
+  const config_path = path.join(root, "newtonium.config.mjs");
+
+  let config: any = {};
+
+  if (existsSync(config_path)) config = (await import(config_path)).default;
 
   const dirname = path.basename(path.dirname(src));
 
@@ -40,7 +45,7 @@ export async function buildApp(root: string, platform: Platform) {
 
   removeJunk(root);
 
-  await packageApp(root, platform);
+  await packageApp(root, platform, config);
 
   log("");
   log("Project was built successfully!");
@@ -148,10 +153,20 @@ function removeJunk(root: string) {
   spinner.success("Junk files removed");
 }
 
-async function packageApp(root: string, platform: Platform) {
+async function packageApp(root: string, platform: Platform, config: any) {
   const spinner = createSpinner("Packaging app...");
 
   const dist = path.join(root, "dist");
+
+  if (config.build && config.build.include) {
+    for (const file of config.build.include) {
+      const f_path = path.join(root, file);
+
+      cpSync(f_path, path.join(dist, file), {
+        recursive: true,
+      });
+    }
+  }
 
   try {
     await bundle(dist, "__entrypoint.js", false, platform, true);

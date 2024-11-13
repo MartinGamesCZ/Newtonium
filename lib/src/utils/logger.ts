@@ -1,4 +1,5 @@
 import chalk, { ColorName } from "chalk";
+import pkg from "../../package.json";
 
 const LogMessages = {
   AppName: color([
@@ -7,7 +8,7 @@ const LogMessages = {
     "gray",
     "white",
     "white",
-  ])`${"Newtonium"} | ${"v0.0.1"}`,
+  ])`${"Newtonium"} | ${"v" + pkg.version}`,
 };
 
 export enum LogMessage {

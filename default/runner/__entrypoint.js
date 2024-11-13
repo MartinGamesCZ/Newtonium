@@ -1,4 +1,4 @@
-const { exec } = require("child_process");
+const { exec, spawn } = require("child_process");
 const { existsSync, writeFileSync } = require("fs");
 const path = require("path");
 
@@ -19,8 +19,13 @@ if (!existsSync("./___initialized")) {
 }
 
 await new Promise((r) => {
-  exec(
+  const proc = spawn(
     `${bun} run node_modules/@newtonium/core/src/entrypoint.ts index.js`,
-    (err, stdout, stderr) => r()
+    {
+      shell: true,
+      stdio: "inherit",
+    }
   );
+
+  proc.on("exit", r);
 });
