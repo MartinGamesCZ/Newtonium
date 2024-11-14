@@ -3,7 +3,7 @@
   "module": "src/index.tsx",
   "type": "module",
   "scripts": {
-    "start": "NODE_ENV=development NEWTONIUM_DEV=true bun src/index.tsx"
+    "start": "NODE_ENV=development NEWTONIUM_DEV=true bun node_modules/newtonium/entrypoint.cjs src/index.tsx"
   },
   "dependencies": {},
   "devDependencies": {

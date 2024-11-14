@@ -24,6 +24,10 @@ await new Promise((r) => {
     {
       shell: true,
       stdio: "inherit",
+      env: {
+        ...process.env,
+        GTK_DEBUG: "interactive",
+      },
     }
   );
 

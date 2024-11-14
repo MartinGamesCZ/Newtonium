@@ -15,7 +15,7 @@
   },
   "scripts": {
     "newtonium": "bun src/index.ts",
-    "prepack": "rm -rf include && mkdir include && cp ../default include/default -r && bun build ./src/lib/index.ts --outdir dist_lib --target bun --external react --external react-reconciler --external @newtonium/gravity --external @newtonium/core && tsc --emitDeclarationOnly --noEmitOnError false --allowJs --skipLibCheck | grep -v 'TS' || true",
+    "prepack": "rm -rf include && mkdir include && cp ../default include/default -r && bun build ./src/lib/index.ts --outdir dist_lib --target bun --external react --external react-reconciler --external @newtonium/gravity --external @newtonium/core && tsc --emitDeclarationOnly --noEmitOnError false --allowJs --skipLibCheck | grep -v 'TS' || true && cp src/_include/* dist_lib/ -r",
     "postinstall": "node build/builder.cjs",
     "build": "node build/builder.cjs",
     "build:linux": "bun build --minify --compile --outfile dist/newtonium src/index.ts && chmod +x dist/newtonium",
