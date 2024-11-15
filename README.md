@@ -2,7 +2,8 @@
 
 # Newtonium
 
-> [!NOTE] > **NOW WITH GRAVITY RENDERER** (allows you to use React components and replaces web wrapper for GTK components)
+> [!NOTE]
+> **NOW WITH GRAVITY RENDERER** (allows you to use React components and replaces web wrapper for GTK components)
 
 > [!IMPORTANT]
 > This project is in a very early development stage. Everything can change and nothing is guaranteed to work.
