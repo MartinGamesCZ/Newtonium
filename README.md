@@ -2,26 +2,30 @@
 
 # Newtonium
 
-> [!NOTE]
-> **NOW WITH GRAVITY RENDERER** (allows you to use React components and replaces web wrapper for native components)
+> [!NOTE] > **NOW WITH GRAVITY RENDERER** (allows you to use React components and replaces web wrapper for GTK components)
 
 > [!IMPORTANT]
 > This project is in a very early development stage. Everything can change and nothing is guaranteed to work.
 
 > [!NOTE]
-> We are currently switching to native rendering using our own React renderer and GTK, more info available [here](https://github.com/MartinGamesCZ/Newtonium_gravity) and [here](https://github.com/MartinGamesCZ/Newtonium_core/tree/gravity)
+> We are currently switching to native rendering using our own React renderer and GTK, more info available [here](https://github.com/MartinGamesCZ/Newtonium_gravity) and [here](https://github.com/MartinGamesCZ/Newtonium_core/)
 
-TypeScript and Rust based framework for building desktop applications using TypeScript and React. Newtonium is built on Webkit, Rust and Bun (with React using Next.JS), so it should be faster and lighter than Electron.
+_The current source code is not well written, managed, or documented. This will change in the future, as I need to have basic framework as soon as possible._
+
+TypeScript and Rust based framework for building desktop applications using TypeScript and React. Newtonium is built on GTK, Rust and Bun (with React using our own renderer - Gravity), so it should be significantly faster and lighter than Electron.
 
 ## Before you start
-Note, that newtonium currently only supports development and building for Linux. Windows and MacOS support is planned.
+
+Note, that newtonium currently only supports development and building for Linux and Windows, MacOS support is planned in distant future.
 
 You will also need to get the following dependencies:
+
 - bun
 - npm
-- Qt development libraries
+- Gtk development libraries (linux only)
 
 ## Getting started
+
 To get started with Newtonium, you first need to install our main library, which includes the CLI.
 
 ```bash
@@ -31,6 +35,7 @@ npm install -g newtonium
 This will take a while, because it needs to download the binaries, but you can add `--foreground-scripts` flag to track the progress.
 
 ### Creating a new project
+
 To create a new project, you can use the following command:
 
 ```bash
@@ -48,6 +53,7 @@ bun run start
 ```
 
 ## Building the project
+
 You can build the project using the following command:
 
 ```bash
@@ -57,33 +63,40 @@ newtonium build
 This will create a binary, which you can run and distribute.
 
 ## Project structure
-There are two main folders in the project:
-- `src` - Contains the source code of the project 
+
+- `src` - Contains the source code of the project
+- `newtonium.config.mjs` - Configuration file for the project
 
 MORE INFO ON GITHUB: [MartinGamesCZ/Newtonium](https://github.com/MartinGamesCZ/Newtonium)
 
-## Roadmap
-- [x] Working prototype
-- [x] Custom webkit embedding
-- [ ] Windows support
+## Planned features (in no particular order)
+
 - [ ] MacOS support
-- [ ] Mobile (android) support
-- <s>[x] Custom IPC</s> *Removed due to implementation of Gravity renderer*
-- [x] Gravity renderer implementation
-- [ ] Support for building background services
+- [ ] Mobile support
+- [ ] Better documentation
+- [ ] More examples
+- [ ] More components
+- [ ] Font manager
+- [ ] OpenGL canvas and custom bindings
+- [ ] Custom devtools
+- [ ] Shared core for all apps on same machine
 
 ## Let me know
+
 If you featured Newtonium in your project, please let me know, I would love to see it.
 
 If you have featured Newtonium in some article, or video, please let me know, I would love to see it.
 
 ## Contact me
+
 You can find my contact information on my [GitHub profile](https://github.com/MartinGamesCZ).
 
 ## Authors
+
 - [Martin Petr](https://github.com/MartinGamesCZ)
 
 ## Support me
+
 If you want to support me, you can give this project a star on GitHub. You can also donate me (if you want to, please contact me).
 
 ## License
